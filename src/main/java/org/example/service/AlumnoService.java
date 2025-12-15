@@ -1,10 +1,16 @@
 package org.example.service;
 
+import jakarta.transaction.Transactional;
+import org.example.model.Alumno;
 import org.example.repository.AlumnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.beans.Transient;
+import java.util.List;
+import java.util.Optional;
 
+@Service
 public class AlumnoService {
 
     private final AlumnoRepository alumnoRepository;
@@ -13,5 +19,17 @@ public class AlumnoService {
     public AlumnoService(AlumnoRepository alumnoRepository) {
         this.alumnoRepository = alumnoRepository;
     }
+
     @Transactional
+    public Alumno creaOuActualizaAlumno(Alumno alumno) {
+        return alumnoRepository.save(alumno);
+    }
+
+    public List<Alumno> obtenerTodosOsAlumnos() {
+        return alumnoRepository.findAll();
+    }
+
+    public Optional<Alumno> obtenerAlumnoPorId(int id) {
+        return alumnoRepository.findById(id);
+    }
 }
