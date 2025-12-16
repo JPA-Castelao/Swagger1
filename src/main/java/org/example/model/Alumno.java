@@ -9,49 +9,37 @@ public class Alumno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
+    @Column(name = "nome")
     private String nome;
+    @Column(name = "apelidos")
     private String apelidos;
-    private int idTitor;
+
+    @ManyToOne
+    @JoinColumn
+    private Titor titor;
 
     public Alumno() {
     }
 
-    public Alumno(String nome, String apelidos, int idTitor) {
+    public Alumno(String nome, String apelidos) {
         this.nome = nome;
-        this.apelidos = apelidos;
-        this.idTitor = idTitor;
-    }
+        this.apelidos = apelidos;}
 
-    public int getId() {
-        return id;
-    }
+    public long getId() {return id;}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(Long id) {this.id = id;}
 
-    public String getNome() {
-        return nome;
-    }
+    public String getNome() {return nome;}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public void setNome(String nome) {this.nome = nome;}
 
-    public String getApelidos() {
-        return apelidos;
-    }
+    public String getApelidos() {return apelidos;}
 
-    public void setApelidos(String apelidos) {
-        this.apelidos = apelidos;
-    }
+    public void setApelidos(String apelidos) {this.apelidos = apelidos;}
 
-    public int getIdTitor() {
-        return idTitor;
-    }
+    public Titor getTitor() {return titor;}
 
-    public void setIdTitor(int idTitor) {
-        this.idTitor = idTitor;
+    public void setTitor(Titor titor) {this.titor = titor;
     }
 }

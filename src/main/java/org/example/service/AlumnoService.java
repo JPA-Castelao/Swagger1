@@ -29,7 +29,7 @@ public class AlumnoService {
         return alumnoRepository.findAll();
     }
 
-    public Optional<Alumno> obtenerAlumnoPorId(int id) {
+    public Optional<Alumno> obtenerAlumnoPorId(Long id) {
         return alumnoRepository.findById(id);
     }
 }
