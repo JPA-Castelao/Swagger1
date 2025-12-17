@@ -17,12 +17,9 @@ public class Titor {
     @Column(name = "apelidos")
     private String apelidos;
 
-    @OneToMany(mappedBy = "titor",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER)
 
-    private List<Alumno> alumnos = new ArrayList<>();
+
+
 
     public Titor() {
     }
@@ -51,11 +48,5 @@ public class Titor {
         this.apelidos = apelidos;
     }
 
-    public List<Alumno> getAlumnos() {
-        return alumnos;
-    }
 
-    public void setAlumnos(List<Alumno> alumnos) {
-        this.alumnos = alumnos;
-    }
 }

@@ -3,7 +3,9 @@ package org.example.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import org.example.model.Alumno;
 import org.example.model.Alumno;
+import org.example.model.Titor;
 import org.example.repository.AlumnoRepository;
+import org.example.repository.TitorRepository;
 import org.example.service.AlumnoService;
 import org.example.service.AlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class RestAlumno {
 
     @Autowired
     private AlumnoRepository alumnoRepository;
+    @Autowired
+    private TitorRepository titorRepository;
     @Autowired
     private AlumnoService alumnoService;
 
@@ -53,7 +57,7 @@ public class RestAlumno {
 
     @Operation(summary = "Actualizar un alumno")
     @PutMapping("/alumno/{id}")
-    public ResponseEntity<Alumno> actualizarAlumno(@PathVariable Long id, @RequestBody Alumno AlumnoDetails) {
+    public ResponseEntity<Alumno> crearOuActualizarAlumno(@PathVariable Long id, @RequestBody Alumno AlumnoDetails) {
         Optional<Alumno> AlumnoOptional = alumnoService.obtenerAlumnoPorId(id);
         if (AlumnoOptional.isPresent()) {
             Alumno alumno = AlumnoOptional.get();

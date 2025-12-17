@@ -1,7 +1,6 @@
 package org.example.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import org.example.model.Alumno;
 import org.example.model.Titor;
 import org.example.repository.TitorRepository;
 import org.example.service.TitorService;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(org.example.controller.RestTitor.MAPPING)
+@RequestMapping(RestTitor.MAPPING)
 public class RestTitor {
 
 
@@ -24,16 +23,9 @@ public class RestTitor {
     @Autowired
     private TitorService titorService;
 
-
-    @Operation(summary = "Método que saúda")
-    @PostMapping("/saudo")
-    public String saudo() {
-        return "Boas";
-    }
-
     @Operation(summary = "Crear un novo titor")
     @PostMapping("/titores")
-    public Titor crearPersoa(@RequestBody Titor titor) {
+    public Titor crearTitor(@RequestBody Titor titor) {
         return titorService.creaOuactualizaTitor(titor);
     }
 
@@ -42,6 +34,14 @@ public class RestTitor {
     public List<Titor> obtenerTitores() {
         return titorService.obtenerTodosOsTitores();
     }
+
+
+    @Operation(summary = "Método que saúda")
+    @PostMapping("/saudo")
+    public String saudo() {
+        return "Boas";
+    }
+
 
     @Operation(summary = "Obter titor por ID")
     @GetMapping("/titor/{id}")

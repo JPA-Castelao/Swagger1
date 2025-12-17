@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TitorRepository extends JpaRepository<Titor, Long> {
-
+    Titor getByNome(String Nome);
 
 }
